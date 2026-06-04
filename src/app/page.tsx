@@ -30,12 +30,9 @@ export default function Home() {
               A comprehensive, data-driven guide to scaling your X presence using
               2026 algorithm strategies, reply tactics, and semantic optimization.
             </p>
-            <div className="flex items-center justify-center gap-3 mt-8">
+            <div className="flex items-center justify-center mt-8">
               <Link href="/docs" className={buttonVariants({ variant: "primary" })}>
                 Get Started
-              </Link>
-              <Link href="#" className={buttonVariants({ variant: "secondary" })}>
-                View on GitHub
               </Link>
             </div>
           </div>
@@ -99,7 +96,7 @@ export default function Home() {
         </section>
 
         {/* Start building */}
-        <section className="max-w-4xl mx-auto px-6 pb-20">
+        <section className="max-w-6xl mx-auto px-6 pb-20">
           <h2 className="text-xs tracking-wide text-secondary mb-4">
             START BUILDING
           </h2>
@@ -172,7 +169,7 @@ export default function Home() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="group relative h-[200px] md:h-[260px] overflow-hidden rounded-2xl bg-[var(--color-bg-surface)] p-6 md:p-8 transition duration-500"
+                className="group relative h-[200px] md:h-[260px] overflow-hidden rounded-xl bg-[var(--color-bg-surface)] p-6 md:p-8 transition duration-500"
               >
                 <div
                   className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100"
@@ -188,10 +185,10 @@ export default function Home() {
                     <item.icon className="h-5 w-5 md:h-6 md:w-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-2xl font-medium text-[var(--color-text-emphasis)] transition duration-500 group-hover:text-white">
+                    <h3 className="text-2xl font-medium text-[var(--color-text-emphasis)] transition duration-500 group-hover:text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm md:text-base text-secondary leading-relaxed transition duration-500 group-hover:text-white">
+                    <p className="mt-2 text-base text-secondary leading-relaxed transition duration-500 group-hover:text-white">
                       {item.desc}
                     </p>
                   </div>

@@ -6,14 +6,32 @@ import { Search, Sun, Moon, Menu } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { useSidebar } from "@/lib/sidebar-context"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
+import { SearchPalette } from "./SearchPalette"
 
 export function Navbar() {
   const pathname = usePathname()
   const sidebar = useSidebar()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+
   useEffect(() => { setMounted(true) }, [])
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      e.preventDefault()
+      setSearchOpen((prev) => !prev)
+    }
+    if (e.key === "Escape") {
+      setSearchOpen(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [handleKeyDown])
 
   const navLinks = [
     { href: "/docs", label: "Docs" },
@@ -56,7 +74,10 @@ export function Navbar() {
 
         <div className="flex-1" />
 
-        <button className="hidden xl:flex min-w-52 items-center justify-between gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] px-4 py-2 text-sm text-secondary transition-colors hover:bg-[var(--color-primary-ghost-hover)] hover:text-default">
+        <button
+          onClick={() => setSearchOpen(true)}
+          className="hidden xl:flex min-w-52 items-center justify-between gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] px-4 py-2 text-sm text-secondary transition-colors hover:bg-[var(--color-primary-ghost-hover)] hover:text-default"
+        >
           <span>Search docs...</span>
           <kbd className="inline-flex items-center gap-0.5 text-xs text-tertiary">
             <span>⌘</span>K
@@ -71,10 +92,12 @@ export function Navbar() {
           {!mounted ? <div className="h-5 w-5" /> : theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
         </button>
 
-        <button className="md:hidden relative right-1 text-secondary hover:text-default transition-colors" aria-label="Search">
+        <button onClick={() => setSearchOpen(true)} className="md:hidden relative right-1 text-secondary hover:text-default transition-colors" aria-label="Search">
           <Search className="h-5 w-5" />
         </button>
       </div>
+
+      <SearchPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )
 }
