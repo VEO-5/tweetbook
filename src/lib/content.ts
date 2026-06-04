@@ -43,6 +43,12 @@ export const docSections: DocSection[] = [
     group: "AEO & Semantic SEO",
   },
   {
+    slug: "signal-boost",
+    title: "Signal Boost",
+    description: "Like posts to increase reply visibility with the author",
+    group: "Reply Strategy",
+  },
+  {
     slug: "cheat-sheet",
     title: "Cheat Sheet",
     description: "Quick reference of all key numbers and rules",

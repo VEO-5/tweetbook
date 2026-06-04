@@ -155,7 +155,7 @@ export default function Home() {
                 icon: Heart,
                 title: "Signal Boost",
                 desc: "Like posts when you reply to increase visibility with the author.",
-                href: "/docs/reply-strategy",
+                href: "/docs/signal-boost",
                 hoverBg: "/hover2.jpg",
               },
               {

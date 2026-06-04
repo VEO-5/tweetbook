@@ -38,6 +38,31 @@ export function Sidebar() {
           const groupSections = docSections.filter((s) => s.group === group)
           const isExpanded = expandedGroups.has(group)
 
+          if (groupSections.length === 1) {
+            const section = groupSections[0]
+            return (
+              <div key={group} className="mb-1">
+                <Link
+                  href={section.slug === "getting-started" ? "/docs" : `/docs/${section.slug}`}
+                  onClick={sidebar.close}
+                  className={cn(
+                    "flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm font-normal transition-colors",
+                    isActive(section.slug)
+                      ? "bg-[var(--color-primary-ghost-active)] text-default font-semibold"
+                      : "text-secondary hover:bg-[var(--color-primary-ghost-hover)] hover:text-default"
+                  )}
+                >
+                  <span className="flex-1">{section.title}</span>
+                  {(section.slug === "reply-strategy" || section.slug === "cheat-sheet") && (
+                    <span className="shrink-0 rounded-full bg-[var(--color-primary-soft)] px-2 py-0.5 text-[10px] font-medium text-secondary">
+                      NEW
+                    </span>
+                  )}
+                </Link>
+              </div>
+            )
+          }
+
           return (
             <div key={group} className="mb-1">
               <button
@@ -86,23 +111,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="border-t border-[var(--color-border)] p-3">
-        <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="flex w-full items-center gap-2 text-xs text-secondary hover:text-default transition-colors"
-        >
-          {mounted && theme === "dark" ? (
-            <><Sun className="h-3.5 w-3.5" /> Light mode</>
-          ) : (
-            <><Moon className="h-3.5 w-3.5" /> Dark mode</>
-          )}
-        </button>
-        <div className="flex items-center gap-3 mt-2 text-xs text-tertiary">
-          <Link href="#" className="hover:text-secondary transition-colors">Terms</Link>
-          <Link href="#" className="hover:text-secondary transition-colors">Changelog</Link>
-          <Link href="#" className="hover:text-secondary transition-colors">Status</Link>
-        </div>
-      </div>
+
     </div>
   )
 
