@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
+import { buttonVariants } from "@/components/Button"
 import { Footer } from "@/components/Footer"
 import { SidebarProvider } from "@/lib/sidebar-context"
 
@@ -30,16 +31,10 @@ export default function Home() {
               2026 algorithm strategies, reply tactics, and semantic optimization.
             </p>
             <div className="flex items-center justify-center gap-3 mt-8">
-              <Link
-                href="/docs"
-                className="inline-flex items-center justify-center h-10 px-5 rounded-full bg-black text-white text-sm font-medium hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90 transition-colors"
-              >
+              <Link href="/docs" className={buttonVariants({ variant: "primary" })}>
                 Get Started
               </Link>
-              <Link
-                href="#"
-                className="inline-flex items-center justify-center h-10 px-5 rounded-full border border-[var(--color-border)] text-sm text-secondary hover:text-default hover:bg-[var(--color-primary-ghost-hover)] transition-colors"
-              >
+              <Link href="#" className={buttonVariants({ variant: "secondary" })}>
                 View on GitHub
               </Link>
             </div>
