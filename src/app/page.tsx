@@ -8,7 +8,7 @@ import {
   Search,
   Users,
   BookOpen,
-  ArrowRight,
+  Heart,
 } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { buttonVariants } from "@/components/Button"
@@ -63,46 +63,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Build paths */}
-        <section className="max-w-4xl mx-auto px-6 pb-16">
-          <h2 className="text-xs tracking-wide text-secondary mb-4">BUILD PATHS</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <Link
-              href="/docs/algorithm-insights"
-              className="group rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-bg-surface)] p-5 hover:bg-[rgba(255,255,255,0.03)] transition-colors"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-base font-semibold text-[var(--color-text-emphasis)]">
-                    Algorithm Insights
-                  </h3>
-                  <p className="mt-1 text-sm text-secondary">
-                    Understand the 2026 X algorithm shifts, reply weighting, and
-                    engagement velocity.
-                  </p>
-                </div>
-                <ArrowRight className="h-5 w-5 text-secondary group-hover:text-default transition-colors shrink-0 mt-0.5" />
-              </div>
-            </Link>
-            <Link
-              href="/docs/reply-strategy"
-              className="group rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-bg-surface)] p-5 hover:bg-[var(--color-primary-ghost-hover)] transition-colors"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-base font-semibold text-[var(--color-text-emphasis)]">
-                    Reply Strategy
-                  </h3>
-                  <p className="mt-1 text-sm text-secondary">
-                    Master the 70/30 rule, target selection, and 7 proven reply
-                    types.
-                  </p>
-                </div>
-                <ArrowRight className="h-5 w-5 text-secondary group-hover:text-default transition-colors shrink-0 mt-0.5" />
-              </div>
-            </Link>
-          </div>
-        </section>
+
 
         {/* Models section — strategy tiers */}
         <section className="max-w-4xl mx-auto px-6 pb-16">
@@ -142,69 +103,99 @@ export default function Home() {
           <h2 className="text-xs tracking-wide text-secondary mb-4">
             START BUILDING
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
                 icon: MessageCircle,
                 title: "Reply Strategy",
                 desc: "Master the 7 reply types that drive engagement.",
                 href: "/docs/reply-strategy",
+                hoverBg: "/hover1.jpg",
               },
               {
                 icon: BarChart3,
                 title: "Algorithm Insights",
                 desc: "Understand what the algorithm rewards.",
                 href: "/docs/algorithm-insights",
+                hoverBg: "/hover2.jpg",
               },
               {
                 icon: Target,
                 title: "Target Selection",
                 desc: "Find the right accounts to engage with.",
                 href: "/docs/reply-strategy",
+                hoverBg: "/hover3.jpg",
               },
               {
                 icon: Lightbulb,
                 title: "Founder Niche",
                 desc: "Patterns that resonate with builder audiences.",
                 href: "/docs/founder-niche",
+                hoverBg: "/hover4.jpg",
               },
               {
                 icon: Clock,
                 title: "Daily Routine",
                 desc: "Optimal timing and volume for replies.",
                 href: "/docs/daily-routine",
+                hoverBg: "/hover5.jpg",
               },
               {
                 icon: Search,
                 title: "AEO & SEO",
                 desc: "Optimize for AI search engines like Grok.",
                 href: "/docs/aeo-seo",
+                hoverBg: "/hover7.jpg",
               },
               {
                 icon: Users,
                 title: "Building in Public",
                 desc: "Share progress to build authentic authority.",
                 href: "/docs/founder-niche",
+                hoverBg: "/hover9.jpg",
+              },
+              {
+                icon: Heart,
+                title: "Signal Boost",
+                desc: "Like posts when you reply to increase visibility with the author.",
+                href: "/docs/reply-strategy",
+                hoverBg: "/hover2.jpg",
               },
               {
                 icon: BookOpen,
                 title: "Cheat Sheet",
                 desc: "Quick reference of all key numbers.",
                 href: "/docs/cheat-sheet",
+                hoverBg: "/hover3.jpg",
               },
             ].map((item) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="group rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-bg-surface)] p-4 hover:bg-[var(--color-primary-ghost-hover)] transition-colors"
+                className="group relative h-[200px] md:h-[260px] overflow-hidden rounded-2xl bg-[var(--color-bg-surface)] p-6 md:p-8 transition duration-500"
               >
-                <item.icon className="h-5 w-5 text-secondary mb-3" />
-                <h3 className="text-sm font-semibold text-[var(--color-text-emphasis)]">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-xs text-secondary leading-relaxed">
-                  {item.desc}
-                </p>
+                <div
+                  className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100"
+                  style={{
+                    backgroundImage: `url(${item.hoverBg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 transition duration-500 group-hover:opacity-100" />
+                <div className="relative z-10 flex h-full flex-col justify-between gap-6">
+                  <div className="text-[var(--color-text-emphasis)] transition duration-500 group-hover:text-white">
+                    <item.icon className="h-5 w-5 md:h-6 md:w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-medium text-[var(--color-text-emphasis)] transition duration-500 group-hover:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm md:text-base text-secondary leading-relaxed transition duration-500 group-hover:text-white">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
