@@ -45,12 +45,6 @@ export default function Home() {
         <section className="max-w-4xl mx-auto px-6 pb-16">
           <div className="rounded-[28px] bg-[var(--color-bg-surface)] shadow-[0_36px_120px_-48px_rgba(15,23,42,0.55)] ring-1 ring-black/10 overflow-hidden">
             <div className="code-block-header">
-              <span className="flex items-center gap-2">
-                <span className="text-xs text-secondary">curl</span>
-              </span>
-              <button className="text-tertiary hover:text-default transition-colors text-xs">
-                Copy
-              </button>
             </div>
             <pre className="p-5 text-sm leading-relaxed overflow-x-auto">
               <code className="text-[var(--color-text-default)]">
