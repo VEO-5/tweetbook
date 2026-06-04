@@ -17,8 +17,6 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/docs", label: "Docs" },
-    { href: "#", label: "API Reference" },
-    { href: "#", label: "Resources" },
   ]
 
   return (
@@ -32,8 +30,8 @@ export function Navbar() {
           <Menu className="h-5 w-5" />
         </button>
 
-        <Link href="/" className="flex items-center font-semibold ml-0 md:-ml-2 text-[var(--color-text-emphasis)] shrink-0">
-          Playbook
+        <Link href="/" className="flex items-center font-bold ml-0 md:-ml-2 text-2xl text-[var(--color-text-emphasis)] shrink-0">
+          Tweetbook
         </Link>
 
         <nav className="hidden md:flex items-center justify-center gap-1">
