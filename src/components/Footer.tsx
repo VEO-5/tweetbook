@@ -91,11 +91,17 @@ export function Footer() {
               </ul>
             </div>
           </div>
-        <div className="mt-8 pt-6 border-t border-[var(--color-border)]">
+        <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex items-center justify-between">
           <p className="text-xs text-tertiary">
             &copy; {new Date().getFullYear()} Twitter Growth Playbook. Built with
             insights from the 2026 X algorithm.
           </p>
+          <Link
+            href="/privacy"
+            className="text-xs text-tertiary hover:text-secondary transition-colors"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>

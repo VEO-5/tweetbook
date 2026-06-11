@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronRight, Sun, Moon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useTheme } from "@/lib/theme-context"
 import { cn } from "@/lib/utils"
 import { docSections, groups } from "@/lib/content"
 import { useState } from "react"

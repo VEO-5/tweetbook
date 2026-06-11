@@ -20,10 +20,16 @@ function getTocItems(): TocItem[] {
 }
 
 export function TableOfContentsProvider() {
-  const [items] = useState<TocItem[]>(getTocItems)
+  const [items, setItems] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>("")
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
+    const tocItems = getTocItems()
+    setItems(tocItems)
+
     const headings = document.querySelectorAll(".prose h2, .prose h3")
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,7 +47,7 @@ export function TableOfContentsProvider() {
     return () => observer.disconnect()
   }, [])
 
-  if (items.length === 0) return null
+  if (!mounted || items.length === 0) return null
 
   return (
     <aside className="hidden xl:block w-[218px] shrink-0">

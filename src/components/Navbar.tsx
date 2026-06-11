@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Search, Sun, Moon, Menu } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useTheme } from "@/lib/theme-context"
 import { cn } from "@/lib/utils"
 import { useSidebar } from "@/lib/sidebar-context"
 import { useState, useEffect, useCallback } from "react"
@@ -48,8 +49,19 @@ export function Navbar() {
           <Menu className="h-5 w-5" />
         </button>
 
-        <Link href="/" className="flex items-center font-bold ml-0 md:-ml-2 text-2xl text-[var(--color-text-emphasis)] shrink-0">
-          Tweetbook
+        <Link href="/" className="flex items-center ml-0 md:-ml-2 shrink-0">
+          {!mounted ? (
+            <div className="h-10 w-32" />
+          ) : (
+            <Image
+              src={theme === "dark" ? "/logo_white.png" : "/logo_dark.png"}
+              alt="Tweetbook"
+              width={140}
+              height={41}
+              className="h-10 w-auto"
+              priority
+            />
+          )}
         </Link>
 
         <nav className="hidden md:flex items-center justify-center gap-1">
